@@ -79,8 +79,16 @@ def build_vector_store(chunks: list, embedding_model, db_type: str):
         return store
     else:
         persist_dir = os.path.join(VECTOR_STORE_DIR, "chroma_db")
-        if os.path.exists(persist_dir):
-            shutil.rmtree(persist_dir)
+        try:
+            if os.path.exists(persist_dir):
+                shutil.rmtree(persist_dir)
+        except PermissionError:
+            # On Windows the Chroma files may still be held open;
+            # use a fresh subdirectory instead.
+            import uuid
+            persist_dir = os.path.join(
+                VECTOR_STORE_DIR, f"chroma_db_{uuid.uuid4().hex[:8]}"
+            )
         store = Chroma.from_documents(
             chunks,
             embedding_model,
