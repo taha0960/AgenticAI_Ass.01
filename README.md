@@ -2,84 +2,102 @@
 # CS-4015 Agentic AI  
 ## Homework 1 – Phase 1: Semantic Search Module
 
-📄 **Read the complete assignment description:**  
-HW1_Phase1_AgenticAI.pdf
+📄 **Assignment Description:** [HW1_Phase1_AgenticAI.pdf](HW1_Phase1_AgenticAI.pdf)
 
 ---
 
-##  Objective
-The goal of this assignment is to build the **memory system** of an AI Research Assistant.
-You will design a **semantic search engine** that retrieves academic documents based on
-meaning rather than keywords.
+## 📖 Project Overview
+This project implements the **memory system** for an AI Research Assistant. It is a **Semantic Search Engine** capable of retrieving academic documents based on meaning rather than keyword matching.
 
-This phase focuses on:
-- Document embeddings
-- Vector databases
-- Semantic retrieval
-- Retrieval quality analysis
+Key technologies:
+- **Streamlit**: For the interactive GUI.
+- **LangChain**: For orchestration and document processing.
+- **Hugging Face**: For state-of-the-art embedding models.
+- **FAISS & Chroma**: For efficient vector storage and retrieval.
 
 ---
 
-##  Tasks Overview
-
-### Task 1: GUI-Based Data Selection
-Your GUI must allow the user to:
-- Upload or select a dataset (minimum 10–15 text documents)
-- View dataset statistics (number of documents, size)
-- No dataset should be hard-coded in the backend
-
-### Task 2: Embedding & Vector Store Configuration
-The GUI must allow the user to select:
-- A Hugging Face embedding model
-- A vector database (FAISS or Chroma)
-
-Based on these selections:
-- Generate embeddings
-- Store them using LangChain
-
-### Task 3: Semantic Retrieval
-Your application must provide:
-- A query input box
-- A configurable `top-k` value
-- Clearly ordered retrieval results based on relevance
-
-### Task 4: Retrieval Evaluation & Analysis
-Test your system with:
-- Multiple queries
-- Different datasets
-- Different embedding models
-
-Analyze and document the quality of retrieval results.
+## 🚀 Key Features
+1.  **Dynamic Dataset Loading**: Upload PDF/TXT files or use the default `data/` directory.
+2.  **Configurable Embeddings**: Choose between multiple models (e.g., `all-MiniLM-L6-v2`, `all-mpnet-base-v2`).
+3.  **Vector Store Options**: Switch between **FAISS** (in-memory/local) and **Chroma** (persistent).
+4.  **Semantic Search**: Query your documents and get relevance-ranked results.
+5.  **Backend Verification**: Automated script to verify core functionality.
 
 ---
 
-## 📁 Project Structure (Must Follow)
+## 🛠️ Installation
+
+### Prerequisites
+- Python 3.8+
+- [Git](https://git-scm.com/)
+
+### Setup Steps
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/taha0960/AgenticAI_Ass.01.git
+    cd AgenticAI_Ass.01
+    ```
+
+2.  **Create a virtual environment** (recommended):
+    ```bash
+    python -m venv venv
+    # Windows
+    venv\Scripts\activate
+    # macOS/Linux
+    source venv/bin/activate
+    ```
+
+3.  **Install dependencies**:
+    ```bash
+    pip install -r requirement.txt
+    ```
+
+---
+
+## 💻 Usage
+
+### 1. Run the GUI Application
+Launch the Streamlit interface:
+```bash
+streamlit run app/gui.py
+```
+- Open your browser at the provided URL (usually `http://localhost:8501`).
+- **Sidebar**: Select your dataset, embedding model, and vector database.
+- **Build Index**: Click to process documents.
+- **Search**: Enter a query to find relevant context.
+
+### 2. Run Verification Script
+To verify the backend logic (loading, embedding, searching) without the GUI:
+```bash
+python verify_backend.py
+```
+This script acts as a test suite, checking all configured models and databases.
+
+---
+
+## 📁 Project Structure
+```
+.
+├── app/
+│   ├── config.py         # Configuration settings (paths, models, constants)
+│   ├── gui.py            # Streamlit frontend application
+│   └── main.py           # Core logic (loading, chunking, embedding, searching)
+├── data/                 # Default dataset directory
+├── experiments/
+│   └── report/           # Experiment reports and findings
+├── Vector_Store/         # Storage for generated vector indices
+├── verify_backend.py     # script to verify backend functionality
+├── requirement.txt       # Python dependencies
+└── README.md             # Project documentation
+```
+
+---
 
 ## 📦 Deliverables
-
-1. GUI-based application  
-2. Complete source code  
-3. Short report (2–3 pages)  
-
-All deliverables must be pushed to this repository.
+- **GUI Application**: Fully functional via `app/gui.py`.
+- **Source Code**: Complete implementation in `app/`.
+- **Report**: Available in `experiments/report/report.md`.
 
 ---
-
-## 🚫 Restrictions
-- Do NOT hard-code datasets
-- Do NOT hard-code embedding models
-- Do NOT hard-code vector database choice
-
----
-
-## 📝 Submission Instructions
-Commit your work regularly.  
-Your **latest commit before the deadline** will be graded.
-
----
-
-## ⚠️ Academic Integrity
-This is an individual assignment.  
-Plagiarism or code sharing will result in disciplinary action.
-
-
+**Author**: Taha
