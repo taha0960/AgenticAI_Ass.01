@@ -28,7 +28,7 @@ from main import (
 # ── Page Config ──────────────────────────────────────────────────
 st.set_page_config(page_title="Semantic Search Engine", layout="wide")
 st.title("Semantic Search Engine")
-st.caption("AI Research Assistant – Memory Module  |  HW1 Phase 1")
+st.caption("AI Research Assistant  –  Memory Module  |  HW1 Phase 1")
 
 # ── Sidebar: Dataset Selection ───────────────────────────────────
 st.sidebar.header("1. Dataset")
@@ -47,7 +47,6 @@ if upload_mode == "Upload files":
         accept_multiple_files=True,
     )
     if uploaded:
-        # Write uploaded files into a temp directory
         tmp_dir = os.path.join(tempfile.gettempdir(), "semantic_search_uploads")
         if os.path.exists(tmp_dir):
             shutil.rmtree(tmp_dir)
@@ -69,7 +68,9 @@ else:
     if dir_files:
         st.sidebar.success(f"Found {len(dir_files)} file(s) in data/ folder.")
     else:
-        st.sidebar.warning("No supported files in data/ folder. Add .txt or .pdf files.")
+        st.sidebar.warning(
+            "No supported files in data/ folder. Add .txt or .pdf files."
+        )
 
 # Show dataset statistics
 if os.path.isdir(dataset_dir):
@@ -97,7 +98,9 @@ db_type = st.sidebar.selectbox("Vector Database", VECTOR_DB_OPTIONS)
 
 # ── Build Index Button ────────────────────────────────────────────
 st.sidebar.markdown("---")
-build_clicked = st.sidebar.button("Build Index", type="primary", use_container_width=True)
+build_clicked = st.sidebar.button(
+    "Build Index", type="primary", use_container_width=True
+)
 
 if build_clicked:
     stats = get_dataset_stats(dataset_dir)
@@ -139,7 +142,9 @@ else:
     )
 
     query = st.text_input("Enter your search query:")
-    top_k = st.slider("Top-K results", min_value=1, max_value=MAX_TOP_K, value=DEFAULT_TOP_K)
+    top_k = st.slider(
+        "Top-K results", min_value=1, max_value=MAX_TOP_K, value=DEFAULT_TOP_K
+    )
 
     if st.button("Search", type="primary") and query:
         with st.spinner("Searching..."):
@@ -148,11 +153,23 @@ else:
         if not results:
             st.warning("No results found.")
         else:
+            # Sort by similarity descending (highest = most relevant)
+            results = sorted(results, key=lambda x: x[1], reverse=True)
+
             st.subheader(f"Top {len(results)} Results")
-            for rank, (doc, score) in enumerate(results, 1):
-                with st.expander(f"#{rank}  |  Score: {score:.4f}  |  {os.path.basename(doc.metadata.get('source', 'N/A'))}"):
-                    st.markdown(f"**Source:** `{doc.metadata.get('source', 'N/A')}`")
-                    if "page" in doc.metadata:
-                        st.markdown(f"**Page:** {doc.metadata['page']}")
-                    st.markdown("**Content:**")
-                    st.text(doc.page_content)
+            for rank, (doc, sim) in enumerate(results, 1):
+                pct = sim * 100
+                src = os.path.basename(doc.metadata.get("source", "N/A"))
+                with st.expander(
+                    f"#{rank}  |  Similarity: {pct:.1f}%  |  {src}",
+                    expanded=(rank == 1),
+                ):
+                    col1, col2 = st.columns([3, 1])
+                    with col1:
+                        st.markdown(f"**Source:** `{src}`")
+                        if "page" in doc.metadata:
+                            st.markdown(f"**Page:** {doc.metadata['page']}")
+                    with col2:
+                        st.metric("Cosine Similarity", f"{pct:.1f}%")
+                    st.markdown("---")
+                    st.markdown(doc.page_content)
