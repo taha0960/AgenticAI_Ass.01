@@ -99,22 +99,46 @@ def build_vector_store(chunks: list, embedding_model, db_type: str):
 
 # ── Semantic Search ──────────────────────────────────────────────
 
-def _l2_to_similarity(l2_dist: float) -> float:
-    """Convert L2 distance to a 0-1 cosine similarity score.
-
-    For unit-normalised embeddings (sentence-transformers default):
-        L2^2 = 2 - 2*cos(theta)  =>  cos(theta) = 1 - L2^2 / 2
-    We clamp the result to [0, 1].
-    """
-    sim = 1.0 - (l2_dist ** 2) / 2.0
-    return max(0.0, min(1.0, sim))
-
-
 def search(vector_store, query: str, top_k: int = 5) -> list:
     """Return the top-k most relevant chunks for *query*.
 
     Each element is a tuple (Document, similarity) where similarity is
     a float in [0, 1] (higher = more relevant).
+
+    Both FAISS and Chroma return L2 (Euclidean) distances.  We convert
+    them to cosine similarity via the embedding model so the score is
+    always in [0, 1] regardless of whether embeddings are unit-normalised.
     """
     raw = vector_store.similarity_search_with_score(query, k=top_k)
-    return [(doc, _l2_to_similarity(dist)) for doc, dist in raw]
+    if not raw:
+        return []
+
+    # Compute the actual cosine similarity using the embedding function
+    # stored on the vector store (works for both FAISS and Chroma).
+    emb_fn = None
+    if hasattr(vector_store, "embedding_function"):
+        emb_fn = vector_store.embedding_function      # FAISS
+    elif hasattr(vector_store, "_embedding_function"):
+        emb_fn = vector_store._embedding_function      # Chroma
+
+    if emb_fn is not None:
+        import numpy as np
+
+        q_vec = np.array(emb_fn.embed_query(query))
+        results = []
+        for doc, _ in raw:
+            d_vec = np.array(emb_fn.embed_documents([doc.page_content])[0])
+            cos_sim = float(
+                np.dot(q_vec, d_vec)
+                / (np.linalg.norm(q_vec) * np.linalg.norm(d_vec) + 1e-10)
+            )
+            cos_sim = max(0.0, min(1.0, cos_sim))
+            results.append((doc, cos_sim))
+        return results
+
+    # Fallback: assume unit-normalised embeddings
+    results = []
+    for doc, l2_dist in raw:
+        sim = 1.0 - (l2_dist ** 2) / 2.0
+        results.append((doc, max(0.0, min(1.0, sim))))
+    return results

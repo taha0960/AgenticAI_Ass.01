@@ -1,0 +1,46 @@
+Number of pages: 2
+--- Page 1 ---
+National University of Computer & Emerging Sciences 
+Course: CS – 4015 Agentic AI (Section: A, B, C) 
+Homework – I (Phase I) 
+Scenario: Building an AI Research Assistant for University Students 
+❖ Project Overview: 
+Universities are overloaded with study material: lecture notes, course outlines, research 
+summaries, policies and FAQs. Students often struggle to find relevant information quickly. 
+You are part of a startup team building an AI Research Assistant that: 
+• Searches through academic content 
+• Remembers relevant information 
+• Answers questions intelligently using retrieved context 
+This assistant will be developed in two phases 
+Phase 1 (Semantic Search Module with GUI): 
+You are tasked with building the memory system of the AI Research Assistant. Before the 
+agent can answer questions, it must learn how to store and retrieve knowledge semantically.  
+❖ Problem Statement: Design a semantic search engine that allows the AI assistant to 
+retrieve relevant academic documents based on meaning rather than keywords. 
+❖ Mandatory Requirements: 
+Task 1: GUI-Based Data Selection 
+Using the GUI, allow the user to: 
+• Upload or select a dataset (minimum 10 – 15 text documents) 
+• View basic dataset information (number of documents, size) 
+No dataset should be hard coded in the backend. 
+Task 2: Embedding and Vector Store Configuration 
+Allow the user to select: 
+• Hugging Face embedding model 
+• Vector database (FAISS/Chroma) 
+Based on these selections: 
+• Generate embeddings 
+• Store embeddings in the selected vector database using LangChain 
+Task 3: Semantic Retrieval 
+• Provide the query input box in the GUI 
+--- Page 2 ---
+• Allow the user to set top-k most relevant documents based on semantic similarity 
+• Display results clearly with relevance ordering 
+Task 4: Retrieval Evaluation and Analysis 
+Test the system with multiple queries. Analyze the quality of retrieval results  across different 
+datasets and different embedding models. 
+Document the observations in the report. 
+ 
+❖ Deliverables (Phase 1): 
+1. GUI-based application 
+2. Source Code 
+3. Short Report (2 – 3 pages) 

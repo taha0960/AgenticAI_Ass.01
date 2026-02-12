@@ -1,0 +1,53 @@
+--- Starting Backend Verification ---
+
+[1] Loading documents from D:\TAHA_Agentic\hw1-phase-1-semantic-search-module-taha0960\data...
+Loaded 12 documents.
+
+[2] Chunking documents...
+Created 167 chunks.
+
+[3] Testing Search with query: 'What is reinforcement learning?'
+
+   -> Using Model: all-MiniLM-L6-v2 (Fast, 384d)
+
+      -> Testing Vector DB: FAISS
+         Found 3 results.
+         1. reinforcement_learning.txt (Score: 0.6891)
+         2. reinforcement_learning.txt (Score: 0.5510)
+         3. reinforcement_learning.txt (Score: 0.5439)
+
+      -> Testing Vector DB: Chroma
+         Found 3 results.
+         1. reinforcement_learning.txt (Score: 0.6891)
+         2. reinforcement_learning.txt (Score: 0.5510)
+         3. reinforcement_learning.txt (Score: 0.5439)
+
+   -> Using Model: all-mpnet-base-v2 (Balanced, 768d)
+
+      -> Testing Vector DB: FAISS
+         Found 3 results.
+         1. reinforcement_learning.txt (Score: 0.5940)
+         2. reinforcement_learning.txt (Score: 0.5180)
+         3. reinforcement_learning.txt (Score: 0.4226)
+
+      -> Testing Vector DB: Chroma
+         Found 3 results.
+         1. reinforcement_learning.txt (Score: 0.5940)
+         2. reinforcement_learning.txt (Score: 0.5180)
+         3. reinforcement_learning.txt (Score: 0.4226)
+
+   -> Using Model: paraphrase-MiniLM-L3-v2 (Fastest, 384d)
+
+      -> Testing Vector DB: FAISS
+         Found 3 results.
+         1. reinforcement_learning.txt (Score: 0.7255)
+         2. reinforcement_learning.txt (Score: 0.6464)
+         3. federated_learning.txt (Score: 0.4431)
+
+      -> Testing Vector DB: Chroma
+         Found 3 results.
+         1. reinforcement_learning.txt (Score: 0.7255)
+         2. reinforcement_learning.txt (Score: 0.6464)
+         3. federated_learning.txt (Score: 0.4431)
+
+--- Verification Complete ---

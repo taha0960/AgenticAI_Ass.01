@@ -1,0 +1,1046 @@
+{
+  "all-MiniLM-L6-v2 (Fast, 384d) + FAISS": {
+    "precision": 100.0,
+    "avg_sim": 70.3,
+    "queries": [
+      {
+        "query": "How do attention mechanisms work in transformers?",
+        "expected": "transformer_architecture.txt",
+        "top_result": "transformer_architecture.txt",
+        "similarity": 81.0,
+        "hit": true,
+        "top3": [
+          [
+            "transformer_architecture.txt",
+            81.0
+          ],
+          [
+            "transformer_architecture.txt",
+            65.8
+          ],
+          [
+            "transformer_architecture.txt",
+            51.3
+          ]
+        ]
+      },
+      {
+        "query": "What is reinforcement learning and how do agents learn?",
+        "expected": "reinforcement_learning.txt",
+        "top_result": "reinforcement_learning.txt",
+        "similarity": 73.1,
+        "hit": true,
+        "top3": [
+          [
+            "reinforcement_learning.txt",
+            73.1
+          ],
+          [
+            "reinforcement_learning.txt",
+            58.4
+          ],
+          [
+            "reinforcement_learning.txt",
+            45.8
+          ]
+        ]
+      },
+      {
+        "query": "Privacy preserving machine learning techniques",
+        "expected": "federated_learning.txt",
+        "top_result": "federated_learning.txt",
+        "similarity": 61.3,
+        "hit": true,
+        "top3": [
+          [
+            "federated_learning.txt",
+            61.3
+          ],
+          [
+            "federated_learning.txt",
+            58.9
+          ],
+          [
+            "federated_learning.txt",
+            58.4
+          ]
+        ]
+      },
+      {
+        "query": "Image recognition and object detection methods",
+        "expected": "computer_vision.txt",
+        "top_result": "computer_vision.txt",
+        "similarity": 43.2,
+        "hit": true,
+        "top3": [
+          [
+            "computer_vision.txt",
+            43.2
+          ],
+          [
+            "computer_vision.txt",
+            42.9
+          ],
+          [
+            "computer_vision.txt",
+            37.7
+          ]
+        ]
+      },
+      {
+        "query": "How are knowledge graphs used for reasoning?",
+        "expected": "knowledge_graphs.txt",
+        "top_result": "knowledge_graphs.txt",
+        "similarity": 78.8,
+        "hit": true,
+        "top3": [
+          [
+            "knowledge_graphs.txt",
+            78.8
+          ],
+          [
+            "knowledge_graphs.txt",
+            70.9
+          ],
+          [
+            "knowledge_graphs.txt",
+            70.6
+          ]
+        ]
+      },
+      {
+        "query": "Combining vision and language in AI models",
+        "expected": "multimodal_learning.txt",
+        "top_result": "multimodal_learning.txt",
+        "similarity": 67.2,
+        "hit": true,
+        "top3": [
+          [
+            "multimodal_learning.txt",
+            67.2
+          ],
+          [
+            "multimodal_learning.txt",
+            49.4
+          ],
+          [
+            "multimodal_learning.txt",
+            47.3
+          ]
+        ]
+      },
+      {
+        "query": "Neural architecture search and automated model design",
+        "expected": "neural_architecture_search.txt",
+        "top_result": "neural_architecture_search.txt",
+        "similarity": 85.8,
+        "hit": true,
+        "top3": [
+          [
+            "neural_architecture_search.txt",
+            85.8
+          ],
+          [
+            "neural_architecture_search.txt",
+            77.8
+          ],
+          [
+            "neural_architecture_search.txt",
+            68.1
+          ]
+        ]
+      },
+      {
+        "query": "Interpretability and explainability of AI decisions",
+        "expected": "explainable_ai.txt",
+        "top_result": "explainable_ai.txt",
+        "similarity": 72.3,
+        "hit": true,
+        "top3": [
+          [
+            "explainable_ai.txt",
+            72.3
+          ],
+          [
+            "explainable_ai.txt",
+            50.0
+          ],
+          [
+            "explainable_ai.txt",
+            48.5
+          ]
+        ]
+      }
+    ]
+  },
+  "all-MiniLM-L6-v2 (Fast, 384d) + Chroma": {
+    "precision": 100.0,
+    "avg_sim": 70.3,
+    "queries": [
+      {
+        "query": "How do attention mechanisms work in transformers?",
+        "expected": "transformer_architecture.txt",
+        "top_result": "transformer_architecture.txt",
+        "similarity": 81.0,
+        "hit": true,
+        "top3": [
+          [
+            "transformer_architecture.txt",
+            81.0
+          ],
+          [
+            "transformer_architecture.txt",
+            65.8
+          ],
+          [
+            "transformer_architecture.txt",
+            51.3
+          ]
+        ]
+      },
+      {
+        "query": "What is reinforcement learning and how do agents learn?",
+        "expected": "reinforcement_learning.txt",
+        "top_result": "reinforcement_learning.txt",
+        "similarity": 73.1,
+        "hit": true,
+        "top3": [
+          [
+            "reinforcement_learning.txt",
+            73.1
+          ],
+          [
+            "reinforcement_learning.txt",
+            58.4
+          ],
+          [
+            "reinforcement_learning.txt",
+            45.8
+          ]
+        ]
+      },
+      {
+        "query": "Privacy preserving machine learning techniques",
+        "expected": "federated_learning.txt",
+        "top_result": "federated_learning.txt",
+        "similarity": 61.3,
+        "hit": true,
+        "top3": [
+          [
+            "federated_learning.txt",
+            61.3
+          ],
+          [
+            "federated_learning.txt",
+            58.9
+          ],
+          [
+            "federated_learning.txt",
+            58.4
+          ]
+        ]
+      },
+      {
+        "query": "Image recognition and object detection methods",
+        "expected": "computer_vision.txt",
+        "top_result": "computer_vision.txt",
+        "similarity": 43.2,
+        "hit": true,
+        "top3": [
+          [
+            "computer_vision.txt",
+            43.2
+          ],
+          [
+            "computer_vision.txt",
+            42.9
+          ],
+          [
+            "computer_vision.txt",
+            37.7
+          ]
+        ]
+      },
+      {
+        "query": "How are knowledge graphs used for reasoning?",
+        "expected": "knowledge_graphs.txt",
+        "top_result": "knowledge_graphs.txt",
+        "similarity": 78.8,
+        "hit": true,
+        "top3": [
+          [
+            "knowledge_graphs.txt",
+            78.8
+          ],
+          [
+            "knowledge_graphs.txt",
+            70.9
+          ],
+          [
+            "knowledge_graphs.txt",
+            70.6
+          ]
+        ]
+      },
+      {
+        "query": "Combining vision and language in AI models",
+        "expected": "multimodal_learning.txt",
+        "top_result": "multimodal_learning.txt",
+        "similarity": 67.2,
+        "hit": true,
+        "top3": [
+          [
+            "multimodal_learning.txt",
+            67.2
+          ],
+          [
+            "multimodal_learning.txt",
+            49.4
+          ],
+          [
+            "multimodal_learning.txt",
+            47.3
+          ]
+        ]
+      },
+      {
+        "query": "Neural architecture search and automated model design",
+        "expected": "neural_architecture_search.txt",
+        "top_result": "neural_architecture_search.txt",
+        "similarity": 85.8,
+        "hit": true,
+        "top3": [
+          [
+            "neural_architecture_search.txt",
+            85.8
+          ],
+          [
+            "neural_architecture_search.txt",
+            77.8
+          ],
+          [
+            "neural_architecture_search.txt",
+            68.1
+          ]
+        ]
+      },
+      {
+        "query": "Interpretability and explainability of AI decisions",
+        "expected": "explainable_ai.txt",
+        "top_result": "explainable_ai.txt",
+        "similarity": 72.3,
+        "hit": true,
+        "top3": [
+          [
+            "explainable_ai.txt",
+            72.3
+          ],
+          [
+            "explainable_ai.txt",
+            50.0
+          ],
+          [
+            "explainable_ai.txt",
+            48.5
+          ]
+        ]
+      }
+    ]
+  },
+  "all-mpnet-base-v2 (Balanced, 768d) + FAISS": {
+    "precision": 100.0,
+    "avg_sim": 68.4,
+    "queries": [
+      {
+        "query": "How do attention mechanisms work in transformers?",
+        "expected": "transformer_architecture.txt",
+        "top_result": "transformer_architecture.txt",
+        "similarity": 80.9,
+        "hit": true,
+        "top3": [
+          [
+            "transformer_architecture.txt",
+            80.9
+          ],
+          [
+            "transformer_architecture.txt",
+            71.1
+          ],
+          [
+            "transformer_architecture.txt",
+            68.2
+          ]
+        ]
+      },
+      {
+        "query": "What is reinforcement learning and how do agents learn?",
+        "expected": "reinforcement_learning.txt",
+        "top_result": "reinforcement_learning.txt",
+        "similarity": 57.6,
+        "hit": true,
+        "top3": [
+          [
+            "reinforcement_learning.txt",
+            57.6
+          ],
+          [
+            "reinforcement_learning.txt",
+            45.2
+          ],
+          [
+            "reinforcement_learning.txt",
+            24.6
+          ]
+        ]
+      },
+      {
+        "query": "Privacy preserving machine learning techniques",
+        "expected": "federated_learning.txt",
+        "top_result": "federated_learning.txt",
+        "similarity": 60.9,
+        "hit": true,
+        "top3": [
+          [
+            "federated_learning.txt",
+            60.9
+          ],
+          [
+            "federated_learning.txt",
+            54.9
+          ],
+          [
+            "federated_learning.txt",
+            54.7
+          ]
+        ]
+      },
+      {
+        "query": "Image recognition and object detection methods",
+        "expected": "computer_vision.txt",
+        "top_result": "computer_vision.txt",
+        "similarity": 35.5,
+        "hit": true,
+        "top3": [
+          [
+            "computer_vision.txt",
+            35.5
+          ],
+          [
+            "multimodal_learning.txt",
+            29.6
+          ],
+          [
+            "computer_vision.txt",
+            15.8
+          ]
+        ]
+      },
+      {
+        "query": "How are knowledge graphs used for reasoning?",
+        "expected": "knowledge_graphs.txt",
+        "top_result": "knowledge_graphs.txt",
+        "similarity": 74.6,
+        "hit": true,
+        "top3": [
+          [
+            "knowledge_graphs.txt",
+            74.6
+          ],
+          [
+            "knowledge_graphs.txt",
+            65.9
+          ],
+          [
+            "knowledge_graphs.txt",
+            63.6
+          ]
+        ]
+      },
+      {
+        "query": "Combining vision and language in AI models",
+        "expected": "multimodal_learning.txt",
+        "top_result": "multimodal_learning.txt",
+        "similarity": 76.3,
+        "hit": true,
+        "top3": [
+          [
+            "multimodal_learning.txt",
+            76.3
+          ],
+          [
+            "multimodal_learning.txt",
+            57.7
+          ],
+          [
+            "natural_language_processing.txt",
+            47.2
+          ]
+        ]
+      },
+      {
+        "query": "Neural architecture search and automated model design",
+        "expected": "neural_architecture_search.txt",
+        "top_result": "neural_architecture_search.txt",
+        "similarity": 85.1,
+        "hit": true,
+        "top3": [
+          [
+            "neural_architecture_search.txt",
+            85.1
+          ],
+          [
+            "neural_architecture_search.txt",
+            78.2
+          ],
+          [
+            "neural_architecture_search.txt",
+            62.3
+          ]
+        ]
+      },
+      {
+        "query": "Interpretability and explainability of AI decisions",
+        "expected": "explainable_ai.txt",
+        "top_result": "explainable_ai.txt",
+        "similarity": 76.0,
+        "hit": true,
+        "top3": [
+          [
+            "explainable_ai.txt",
+            76.0
+          ],
+          [
+            "explainable_ai.txt",
+            73.9
+          ],
+          [
+            "explainable_ai.txt",
+            71.2
+          ]
+        ]
+      }
+    ]
+  },
+  "all-mpnet-base-v2 (Balanced, 768d) + Chroma": {
+    "precision": 100.0,
+    "avg_sim": 68.4,
+    "queries": [
+      {
+        "query": "How do attention mechanisms work in transformers?",
+        "expected": "transformer_architecture.txt",
+        "top_result": "transformer_architecture.txt",
+        "similarity": 80.9,
+        "hit": true,
+        "top3": [
+          [
+            "transformer_architecture.txt",
+            80.9
+          ],
+          [
+            "transformer_architecture.txt",
+            71.1
+          ],
+          [
+            "transformer_architecture.txt",
+            68.2
+          ]
+        ]
+      },
+      {
+        "query": "What is reinforcement learning and how do agents learn?",
+        "expected": "reinforcement_learning.txt",
+        "top_result": "reinforcement_learning.txt",
+        "similarity": 57.6,
+        "hit": true,
+        "top3": [
+          [
+            "reinforcement_learning.txt",
+            57.6
+          ],
+          [
+            "reinforcement_learning.txt",
+            45.2
+          ],
+          [
+            "reinforcement_learning.txt",
+            24.6
+          ]
+        ]
+      },
+      {
+        "query": "Privacy preserving machine learning techniques",
+        "expected": "federated_learning.txt",
+        "top_result": "federated_learning.txt",
+        "similarity": 60.9,
+        "hit": true,
+        "top3": [
+          [
+            "federated_learning.txt",
+            60.9
+          ],
+          [
+            "federated_learning.txt",
+            54.9
+          ],
+          [
+            "federated_learning.txt",
+            54.7
+          ]
+        ]
+      },
+      {
+        "query": "Image recognition and object detection methods",
+        "expected": "computer_vision.txt",
+        "top_result": "computer_vision.txt",
+        "similarity": 35.5,
+        "hit": true,
+        "top3": [
+          [
+            "computer_vision.txt",
+            35.5
+          ],
+          [
+            "multimodal_learning.txt",
+            29.6
+          ],
+          [
+            "computer_vision.txt",
+            15.8
+          ]
+        ]
+      },
+      {
+        "query": "How are knowledge graphs used for reasoning?",
+        "expected": "knowledge_graphs.txt",
+        "top_result": "knowledge_graphs.txt",
+        "similarity": 74.6,
+        "hit": true,
+        "top3": [
+          [
+            "knowledge_graphs.txt",
+            74.6
+          ],
+          [
+            "knowledge_graphs.txt",
+            65.9
+          ],
+          [
+            "knowledge_graphs.txt",
+            63.6
+          ]
+        ]
+      },
+      {
+        "query": "Combining vision and language in AI models",
+        "expected": "multimodal_learning.txt",
+        "top_result": "multimodal_learning.txt",
+        "similarity": 76.3,
+        "hit": true,
+        "top3": [
+          [
+            "multimodal_learning.txt",
+            76.3
+          ],
+          [
+            "multimodal_learning.txt",
+            57.7
+          ],
+          [
+            "natural_language_processing.txt",
+            47.2
+          ]
+        ]
+      },
+      {
+        "query": "Neural architecture search and automated model design",
+        "expected": "neural_architecture_search.txt",
+        "top_result": "neural_architecture_search.txt",
+        "similarity": 85.1,
+        "hit": true,
+        "top3": [
+          [
+            "neural_architecture_search.txt",
+            85.1
+          ],
+          [
+            "neural_architecture_search.txt",
+            78.2
+          ],
+          [
+            "neural_architecture_search.txt",
+            62.3
+          ]
+        ]
+      },
+      {
+        "query": "Interpretability and explainability of AI decisions",
+        "expected": "explainable_ai.txt",
+        "top_result": "explainable_ai.txt",
+        "similarity": 76.0,
+        "hit": true,
+        "top3": [
+          [
+            "explainable_ai.txt",
+            76.0
+          ],
+          [
+            "explainable_ai.txt",
+            73.9
+          ],
+          [
+            "explainable_ai.txt",
+            71.2
+          ]
+        ]
+      }
+    ]
+  },
+  "paraphrase-MiniLM-L3-v2 (Fastest, 384d) + FAISS": {
+    "precision": 100.0,
+    "avg_sim": 0.0,
+    "queries": [
+      {
+        "query": "How do attention mechanisms work in transformers?",
+        "expected": "transformer_architecture.txt",
+        "top_result": "transformer_architecture.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "transformer_architecture.txt",
+            0.0
+          ],
+          [
+            "transformer_architecture.txt",
+            0.0
+          ],
+          [
+            "computer_vision.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "What is reinforcement learning and how do agents learn?",
+        "expected": "reinforcement_learning.txt",
+        "top_result": "reinforcement_learning.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "reinforcement_learning.txt",
+            0.0
+          ],
+          [
+            "reinforcement_learning.txt",
+            0.0
+          ],
+          [
+            "federated_learning.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Privacy preserving machine learning techniques",
+        "expected": "federated_learning.txt",
+        "top_result": "federated_learning.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "federated_learning.txt",
+            0.0
+          ],
+          [
+            "federated_learning.txt",
+            0.0
+          ],
+          [
+            "federated_learning.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Image recognition and object detection methods",
+        "expected": "computer_vision.txt",
+        "top_result": "computer_vision.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "computer_vision.txt",
+            0.0
+          ],
+          [
+            "computer_vision.txt",
+            0.0
+          ],
+          [
+            "multimodal_learning.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "How are knowledge graphs used for reasoning?",
+        "expected": "knowledge_graphs.txt",
+        "top_result": "knowledge_graphs.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "knowledge_graphs.txt",
+            0.0
+          ],
+          [
+            "knowledge_graphs.txt",
+            0.0
+          ],
+          [
+            "graph_neural_networks.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Combining vision and language in AI models",
+        "expected": "multimodal_learning.txt",
+        "top_result": "multimodal_learning.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "multimodal_learning.txt",
+            0.0
+          ],
+          [
+            "multimodal_learning.txt",
+            0.0
+          ],
+          [
+            "natural_language_processing.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Neural architecture search and automated model design",
+        "expected": "neural_architecture_search.txt",
+        "top_result": "neural_architecture_search.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "neural_architecture_search.txt",
+            0.0
+          ],
+          [
+            "neural_architecture_search.txt",
+            0.0
+          ],
+          [
+            "neural_architecture_search.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Interpretability and explainability of AI decisions",
+        "expected": "explainable_ai.txt",
+        "top_result": "explainable_ai.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "explainable_ai.txt",
+            0.0
+          ],
+          [
+            "explainable_ai.txt",
+            0.0
+          ],
+          [
+            "explainable_ai.txt",
+            0.0
+          ]
+        ]
+      }
+    ]
+  },
+  "paraphrase-MiniLM-L3-v2 (Fastest, 384d) + Chroma": {
+    "precision": 100.0,
+    "avg_sim": 0.0,
+    "queries": [
+      {
+        "query": "How do attention mechanisms work in transformers?",
+        "expected": "transformer_architecture.txt",
+        "top_result": "transformer_architecture.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "transformer_architecture.txt",
+            0.0
+          ],
+          [
+            "transformer_architecture.txt",
+            0.0
+          ],
+          [
+            "computer_vision.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "What is reinforcement learning and how do agents learn?",
+        "expected": "reinforcement_learning.txt",
+        "top_result": "reinforcement_learning.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "reinforcement_learning.txt",
+            0.0
+          ],
+          [
+            "reinforcement_learning.txt",
+            0.0
+          ],
+          [
+            "federated_learning.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Privacy preserving machine learning techniques",
+        "expected": "federated_learning.txt",
+        "top_result": "federated_learning.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "federated_learning.txt",
+            0.0
+          ],
+          [
+            "federated_learning.txt",
+            0.0
+          ],
+          [
+            "federated_learning.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Image recognition and object detection methods",
+        "expected": "computer_vision.txt",
+        "top_result": "computer_vision.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "computer_vision.txt",
+            0.0
+          ],
+          [
+            "computer_vision.txt",
+            0.0
+          ],
+          [
+            "multimodal_learning.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "How are knowledge graphs used for reasoning?",
+        "expected": "knowledge_graphs.txt",
+        "top_result": "knowledge_graphs.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "knowledge_graphs.txt",
+            0.0
+          ],
+          [
+            "knowledge_graphs.txt",
+            0.0
+          ],
+          [
+            "graph_neural_networks.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Combining vision and language in AI models",
+        "expected": "multimodal_learning.txt",
+        "top_result": "multimodal_learning.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "multimodal_learning.txt",
+            0.0
+          ],
+          [
+            "multimodal_learning.txt",
+            0.0
+          ],
+          [
+            "natural_language_processing.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Neural architecture search and automated model design",
+        "expected": "neural_architecture_search.txt",
+        "top_result": "neural_architecture_search.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "neural_architecture_search.txt",
+            0.0
+          ],
+          [
+            "neural_architecture_search.txt",
+            0.0
+          ],
+          [
+            "neural_architecture_search.txt",
+            0.0
+          ]
+        ]
+      },
+      {
+        "query": "Interpretability and explainability of AI decisions",
+        "expected": "explainable_ai.txt",
+        "top_result": "explainable_ai.txt",
+        "similarity": 0.0,
+        "hit": true,
+        "top3": [
+          [
+            "explainable_ai.txt",
+            0.0
+          ],
+          [
+            "explainable_ai.txt",
+            0.0
+          ],
+          [
+            "explainable_ai.txt",
+            0.0
+          ]
+        ]
+      }
+    ]
+  }
+}
