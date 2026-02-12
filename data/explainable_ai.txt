@@ -1,0 +1,23 @@
+Title: Beyond Saliency Maps: Concept-Based Explanations for Deep Neural Network Predictions in Clinical Decision Support
+
+Abstract
+
+The deployment of deep neural networks in high-stakes domains such as healthcare, criminal justice, and autonomous systems has intensified the demand for interpretable and explainable artificial intelligence (XAI). While post-hoc explanation methods such as SHAP, LIME, and gradient-based saliency maps have gained widespread adoption, they operate at the level of individual input features (pixels, tokens) and often fail to provide explanations that align with human conceptual reasoning. In this paper, we present Concept Bottleneck Explanations (CBE), a framework that generates explanations in terms of human-interpretable clinical concepts rather than low-level features. CBE introduces a concept bottleneck layer trained jointly with the prediction network, forcing the model to route its predictions through an intermediate representation grounded in clinically meaningful attributes. Evaluated on three medical imaging tasks, CBE produces explanations that are rated 47% more useful by practicing clinicians compared to GradCAM saliency maps, while maintaining diagnostic accuracy within 1.3% of black-box baselines.
+
+1. Introduction
+
+Deep neural networks achieve human-competitive performance across a growing range of tasks, yet their decision-making processes remain largely opaque. This opacity poses significant challenges in domains where understanding the rationale behind a prediction is as important as the prediction itself. In healthcare, a radiologist needs to know not merely that a model predicts malignancy, but which visual features, such as spiculated margins, irregular shape, or heterogeneous enhancement, contributed to that assessment. Regulatory frameworks including the EU AI Act and FDA guidance on clinical decision support increasingly mandate that AI systems provide meaningful explanations of their outputs.
+
+Existing explanation methods can be broadly categorized as post-hoc or inherently interpretable. Post-hoc methods, applied after model training, generate explanations by analyzing the model's internal computations. Saliency maps highlight which input regions most influenced the output, but these pixel-level attributions often lack semantic coherence and can be fragile to minor input perturbations. Inherently interpretable models, such as linear models or shallow decision trees, sacrifice representational capacity to achieve transparency, creating a perceived trade-off between accuracy and interpretability.
+
+2. Methodology
+
+CBE bridges this gap by inserting a concept bottleneck layer between the feature extraction backbone and the classification head. This layer consists of k concept neurons, each trained to predict the presence or absence of a predefined clinical concept (e.g., "calcification present," "lesion diameter > 2cm," "irregular border"). The final classification is then computed as a function of these concept activations, making the prediction pathway inherently auditable. During training, concept labels are obtained from structured radiology reports using NLP extraction. At inference, the model outputs both a diagnostic prediction and a concept profile explaining which clinical attributes drove the decision.
+
+3. Results
+
+On mammographic mass classification (DDSM dataset), CBE achieves an AUC of 0.912 compared to 0.924 for the unconstrained ResNet-50 baseline. Clinician evaluation studies involving 24 radiologists show that concept-based explanations are rated significantly more actionable (mean score 4.2/5.0) than GradCAM (2.9/5.0) and LIME (3.1/5.0). Critically, clinicians report higher trust calibration with CBE: their confidence in the model's predictions more accurately reflects actual model accuracy.
+
+4. Conclusion
+
+CBE demonstrates that concept-grounded explanations can achieve practical interpretability in clinical AI without substantial accuracy sacrifice, offering a pathway toward trustworthy and regulatorily compliant medical AI systems.

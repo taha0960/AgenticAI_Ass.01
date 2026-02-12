@@ -1,0 +1,23 @@
+Title: Communication-Efficient Federated Learning with Differential Privacy Guarantees for Healthcare Applications
+
+Abstract
+
+Federated learning (FL) has emerged as a promising paradigm for training machine learning models across distributed data sources without centralizing sensitive information. This is particularly relevant in healthcare, where patient data is subject to stringent privacy regulations such as HIPAA and GDPR. However, vanilla federated learning still exposes model updates that can leak private information through gradient inversion attacks. In this paper, we propose DP-FedAvg+, a communication-efficient federated learning framework that combines secure aggregation with formal differential privacy guarantees. Our approach introduces adaptive gradient clipping and noise calibration that account for heterogeneous data distributions across participating institutions. We evaluate DP-FedAvg+ on three medical imaging classification tasks across 12 simulated hospital sites and demonstrate that it achieves diagnostic accuracy within 2.1% of centralized training while providing (epsilon=3.2, delta=1e-5)-differential privacy, reducing communication costs by 67% compared to standard FedAvg through structured gradient compression.
+
+1. Introduction
+
+The traditional machine learning pipeline assumes that training data can be collected and stored in a centralized repository. In healthcare, this assumption frequently conflicts with legal, ethical, and logistical constraints. Patient records, medical images, and genomic data are distributed across hospitals, clinics, and research institutions, each governed by distinct regulatory frameworks. Federated learning addresses this challenge by keeping data localized: each participating institution trains a local model on its own data and shares only model updates (gradients or weights) with a central coordinating server, which aggregates these updates to produce a global model.
+
+Despite its privacy advantages over centralization, federated learning is not inherently private. Recent work has demonstrated that individual training examples can be reconstructed from shared gradients through optimization-based gradient inversion attacks. Furthermore, the communication overhead of transmitting full model updates at each training round can be prohibitive, particularly for large models over bandwidth-constrained networks.
+
+2. Methodology
+
+DP-FedAvg+ addresses both privacy and communication challenges through three integrated mechanisms. First, we apply per-sample gradient clipping with an adaptive clipping threshold that is estimated from the gradient norm distribution at each institution using secure multi-party computation, avoiding the need for a fixed global clipping constant. Second, calibrated Gaussian noise is added to clipped gradients before transmission, providing formal (epsilon, delta)-differential privacy guarantees via the moments accountant framework. Third, we employ structured gradient compression using randomized block sparsification, transmitting only the top-k entries within each parameter block, reducing upload bandwidth by 67% with minimal impact on convergence.
+
+3. Results
+
+On chest X-ray classification (CheXpert, 14 pathologies), DP-FedAvg+ achieves a mean AUC of 0.847 compared to 0.865 for centralized training and 0.831 for standard FedAvg with equivalent privacy budget. On diabetic retinopathy grading, our approach achieves 83.2% accuracy versus 85.1% centralized, while maintaining formal privacy guarantees. Convergence analysis shows that DP-FedAvg+ reaches target accuracy in 40% fewer communication rounds than naive differentially private FedAvg.
+
+4. Conclusion
+
+DP-FedAvg+ demonstrates that practical federated learning systems can simultaneously achieve strong privacy guarantees, communication efficiency, and competitive model performance, advancing the feasibility of privacy-preserving collaborative learning in clinical settings.

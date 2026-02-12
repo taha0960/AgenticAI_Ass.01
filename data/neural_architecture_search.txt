@@ -1,0 +1,23 @@
+Title: Hardware-Aware Neural Architecture Search via Differentiable Latency Prediction for Edge Deployment
+
+Abstract
+
+Neural Architecture Search (NAS) automates the design of neural network architectures, potentially surpassing human-designed models in both accuracy and efficiency. However, most NAS methods optimize solely for task accuracy, neglecting the hardware constraints critical for deployment on edge devices such as mobile phones, IoT sensors, and embedded systems. We propose HW-DARTS, a hardware-aware differentiable architecture search method that jointly optimizes classification accuracy and inference latency on target hardware. Unlike prior approaches that rely on proxy metrics such as FLOPs or parameter counts, HW-DARTS incorporates a differentiable latency predictor trained on empirical latency measurements from the target device, enabling gradient-based optimization of a Pareto-optimal trade-off between accuracy and real-world inference speed. On ImageNet classification, HW-DARTS discovers architectures that achieve 76.8% top-1 accuracy with 5.2ms inference latency on a Pixel 4 mobile CPU, improving upon MobileNetV3-Large (75.2%, 6.1ms) and EfficientNet-B0 (77.1%, 8.4ms) on the accuracy-latency Pareto frontier.
+
+1. Introduction
+
+The design of neural network architectures has traditionally been a manual process guided by domain expertise and extensive experimentation. Neural Architecture Search aims to automate this process by formulating architecture design as an optimization problem over a structured search space. Early NAS methods employed reinforcement learning or evolutionary algorithms to explore architecture spaces, requiring thousands of GPU-hours per search. Differentiable NAS methods, exemplified by DARTS, dramatically reduced search costs by relaxing discrete architecture choices into continuous variables optimizable via gradient descent, enabling architecture search within a few GPU-hours.
+
+For deployment on resource-constrained devices, the discovered architecture must not only achieve high accuracy but also meet strict latency, memory, and energy budgets. FLOPs and parameter counts are commonly used as efficiency proxies, but these metrics correlate poorly with actual inference latency due to hardware-specific factors including memory bandwidth, cache hierarchies, operator fusion, and accelerator utilization patterns. An architecture with fewer FLOPs may paradoxically exhibit higher latency than a larger architecture if it relies on operations that are poorly optimized on the target hardware.
+
+2. Methodology
+
+HW-DARTS extends the DARTS framework with two innovations. First, we construct a latency lookup table by profiling the inference time of each candidate operation in the search space on the target hardware platform, measuring each operation across a range of input resolutions and channel widths. Second, we train a differentiable latency predictor, a lightweight neural network that maps the continuous architecture parameters (softmax-weighted operation mixing weights) to predicted end-to-end inference latency. This predictor is differentiable with respect to the architecture parameters, enabling us to add a latency penalty term to the DARTS objective function and optimize accuracy and latency jointly through standard backpropagation. The strength of the latency penalty is controlled by a user-specified Lagrange multiplier that navigates the accuracy-latency Pareto frontier.
+
+3. Results
+
+Across five target hardware platforms (Pixel 4 CPU, Jetson Nano GPU, Raspberry Pi 4, Samsung Exynos NPU, and Intel Neural Compute Stick 2), HW-DARTS consistently discovers architectures on or above the accuracy-latency Pareto frontier established by existing efficient architectures. The discovered architectures exhibit hardware-specific structural adaptations: GPU-targeted architectures favor wider, shallower topologies, while CPU-targeted architectures prefer deeper networks with depthwise separable convolutions.
+
+4. Conclusion
+
+HW-DARTS demonstrates that incorporating differentiable hardware-specific latency modeling into architecture search yields practically superior architectures that are tailored to their deployment platform, bridging the gap between NAS research and real-world edge deployment.

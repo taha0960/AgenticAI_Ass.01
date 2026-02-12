@@ -1,0 +1,23 @@
+Title: Contextual Semantic Parsing with Pre-trained Language Models: Bridging the Gap Between Syntax and Meaning
+
+Abstract
+
+Natural language processing has undergone a paradigm shift with the advent of large-scale pre-trained language models such as BERT, GPT, and their successors. While these models demonstrate remarkable proficiency on surface-level language tasks, their capacity for deep semantic understanding, particularly compositional generalization and pragmatic inference, remains an open question. This paper investigates the extent to which fine-tuned language models capture semantic structure by evaluating them on a novel benchmark, CompSem-7K, which consists of 7,000 sentence pairs annotated for semantic equivalence, entailment, and compositional complexity. Our results reveal that while models achieve near-human performance on simple paraphrase detection (F1 = 0.94), performance degrades significantly on compositionally complex constructions (F1 = 0.71), suggesting fundamental limitations in current architectures' ability to process nested semantic relationships.
+
+1. Introduction
+
+Understanding natural language requires more than pattern matching over surface forms; it demands the ability to extract meaning, resolve ambiguity, track discourse structure, and perform pragmatic inference. Pre-trained language models learn contextual word representations by training on massive text corpora using self-supervised objectives such as masked language modeling or causal language modeling. These representations encode rich linguistic information, including syntactic dependencies and certain semantic relationships. However, the degree to which these models achieve genuine language understanding, as opposed to sophisticated statistical correlation, remains a subject of active debate in the computational linguistics community.
+
+Compositional generalization, the ability to understand novel combinations of known components, is considered a hallmark of human linguistic competence. For instance, understanding "the cat chased the dog" and "the dog chased the cat" requires sensitivity to argument structure, not merely the co-occurrence of content words. Previous work has demonstrated mixed results regarding neural models' compositional abilities, with performance highly dependent on the specific construction types evaluated.
+
+2. Methodology
+
+We construct CompSem-7K through a rigorous annotation pipeline involving expert linguists. The benchmark stratifies examples into five compositional complexity levels, ranging from simple lexical substitution (Level 1) to deeply nested quantifier scope interactions (Level 5). Three pre-trained models are evaluated: BERT-Large, RoBERTa-Large, and DeBERTa-V3. Each model is fine-tuned on 80% of the data with the remaining 20% held out for evaluation. We additionally perform probing experiments using diagnostic classifiers attached to intermediate layers to identify where compositional information is encoded within the model representations.
+
+3. Results
+
+All three models achieve strong performance on Level 1 and Level 2 examples (F1 > 0.90). Performance progressively deteriorates at higher complexity levels, with DeBERTa-V3 showing the most graceful degradation (Level 5 F1 = 0.74 vs. BERT-Large Level 5 F1 = 0.65). Probing experiments reveal that compositional information is most concentrated in the middle layers (layers 10-16 of 24-layer models), suggesting that neither the lowest nor highest layers are primarily responsible for compositional processing.
+
+4. Conclusion
+
+Our findings indicate that current pre-trained language models possess partial but incomplete compositional semantic capabilities, with performance inversely correlated with structural complexity. These results motivate future work on architectures and training objectives that more explicitly encode compositional structure.

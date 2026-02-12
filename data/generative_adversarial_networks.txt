@@ -1,0 +1,23 @@
+Title: StyleGAN3: Towards Alias-Free High-Resolution Image Synthesis with Continuous Generator Architectures
+
+Abstract
+
+Generative Adversarial Networks (GANs) have achieved remarkable success in photorealistic image synthesis, with architectures such as StyleGAN2 producing images nearly indistinguishable from real photographs. However, a persistent artifact in existing generators is texture sticking, where fine details appear to be anchored to fixed pixel coordinates rather than moving naturally with the underlying objects. This phenomenon arises from aliasing introduced by non-ideal signal processing operations within the generator network. In this paper, we present a comprehensive analysis of aliasing sources in convolutional generators and propose a series of architectural modifications that enforce strict equivariance to continuous transformations. Our alias-free generator produces images with significantly improved temporal coherence in video applications while maintaining synthesis quality, achieving a Frechet Inception Distance (FID) of 3.87 on FFHQ-1024 and eliminating texture sticking artifacts as measured by our proposed Temporal Consistency Score (TCS).
+
+1. Introduction
+
+Generative adversarial networks operate through a minimax game between two neural networks: a generator G that maps random latent vectors to synthetic images, and a discriminator D that attempts to distinguish synthetic images from real ones. Through iterative adversarial training, the generator learns to produce increasingly realistic images that fool the discriminator. The StyleGAN family of architectures introduced style-based generators that map latent codes through a mapping network to intermediate style vectors, which modulate convolutional features via adaptive instance normalization. This design enables intuitive control over generated image attributes at different levels of detail.
+
+Despite producing visually stunning static images, StyleGAN2 generators exhibit subtle artifacts when the latent space is smoothly interpolated or when generated images are used in video synthesis. Texture sticking, where high-frequency details remain fixed to absolute pixel positions during latent interpolation, reveals that the generator has partially memorized spatial statistics rather than learning truly equivariant representations.
+
+2. Methodology
+
+We identify three primary sources of aliasing in convolutional generators: point-wise nonlinearities that create arbitrarily high frequencies, non-ideal upsampling filters that fail to suppress above-Nyquist content, and per-pixel noise injection that introduces spatially locked stochastic detail. Our solution enforces continuous equivariance by replacing all nonlinearities with filtered versions that band-limit their output, using Kaiser-windowed sinc filters for all resampling operations, and transforming per-pixel noise into spatially continuous noise fields that transform correctly under geometric operations.
+
+3. Results
+
+The alias-free generator achieves an FID of 3.87 on FFHQ-1024, comparable to StyleGAN2's 3.82, confirming that our modifications preserve synthesis quality. The TCS improves from 0.62 to 0.91, indicating dramatically reduced texture sticking. Perceptual studies with 150 participants confirm that videos generated with smooth latent interpolation using our model are rated as significantly more natural than those produced by StyleGAN2 (mean opinion score 4.3 vs. 3.1 on a 5-point scale).
+
+4. Conclusion
+
+By systematically addressing aliasing at every stage of the generator, we achieve temporally coherent image synthesis without sacrificing fidelity, opening new possibilities for GAN-based video generation and animation.

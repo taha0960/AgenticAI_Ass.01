@@ -1,0 +1,23 @@
+Title: Efficient Multi-Scale Object Detection via Dynamic Feature Pyramid Networks with Deformable Convolutions
+
+Abstract
+
+Object detection remains one of the most actively studied problems in computer vision, with applications spanning autonomous driving, medical imaging, surveillance, and robotics. Modern detectors rely heavily on feature pyramid networks (FPNs) to handle the challenge of detecting objects at varying scales. However, standard FPNs employ fixed top-down and lateral connections that may not optimally fuse features across scales for all object categories. In this paper, we introduce Dynamic Feature Pyramid Networks (DyFPN), which replace static lateral connections with learned, input-dependent routing functions that dynamically allocate computational resources to the most informative feature scales. Combined with deformable convolutions that adapt receptive fields to object geometry, DyFPN achieves state-of-the-art performance on the COCO detection benchmark with an AP of 52.4 using a ResNeXt-101 backbone, representing a 1.9-point improvement over the standard FPN baseline while adding only 8% computational overhead.
+
+1. Introduction
+
+The fundamental challenge in object detection lies in localizing and classifying objects that may appear at vastly different scales, aspect ratios, and levels of occlusion within a single image. Two-stage detectors, exemplified by the Faster R-CNN family, first generate region proposals and then classify and refine them, achieving high accuracy at the cost of computational efficiency. Single-stage detectors like YOLO and RetinaNet directly predict bounding boxes and class labels from anchor positions, trading some accuracy for speed. Both paradigms benefit from multi-scale feature representations, as shallow layers in convolutional networks capture fine-grained spatial details necessary for small object detection, while deeper layers encode high-level semantic information critical for classification.
+
+Feature Pyramid Networks address scale variation by constructing a top-down pathway that enriches spatially precise but semantically weak lower-level features with semantically rich higher-level features through lateral connections. Despite their effectiveness, standard FPNs treat all lateral connections identically, ignoring the fact that different object categories and scales may benefit from different fusion strategies.
+
+2. Methodology
+
+DyFPN introduces a lightweight routing module at each lateral connection point. This module takes as input the feature maps from both the top-down pathway and the corresponding bottom-up layer, and produces a set of soft routing weights via a squeeze-and-excitation block followed by a softmax operation. These weights determine the relative contribution of each scale's features to the fused output. We further augment DyFPN with deformable convolutions in the detection head, allowing each convolutional kernel to learn spatial offsets that adapt its sampling locations to the geometric properties of the underlying object, improving detection of non-rigid and irregularly shaped objects.
+
+3. Results
+
+On the COCO test-dev set, DyFPN achieves 52.4 AP with a ResNeXt-101-64x4d backbone. Notably, the improvement is most pronounced for small objects (AP_S = 35.1, +2.7 over baseline), validating the hypothesis that dynamic feature routing is especially beneficial when cross-scale information fusion is critical. Inference speed remains practical at 11.2 frames per second on a single V100 GPU.
+
+4. Conclusion
+
+DyFPN demonstrates that input-dependent feature pyramid construction yields meaningful detection improvements, particularly for small and geometrically complex objects, with manageable computational cost.

@@ -1,0 +1,25 @@
+Title: Neuro-Symbolic Knowledge Graph Reasoning with Rule-Guided Graph Transformers
+
+Abstract
+
+Knowledge graphs (KGs) serve as structured repositories of factual information, encoding entities and their interrelations as directed labeled graphs. Reasoning over knowledge graphs, including tasks such as link prediction, entity classification, and query answering, is fundamental to applications in search engines, recommendation systems, and question answering. While embedding-based methods (TransE, ComplEx, RotatE) efficiently capture relational patterns through distributed representations, they lack transparency and struggle with complex multi-hop reasoning chains. Conversely, symbolic rule-based approaches (AMIE, RuleN) provide interpretable logical rules but suffer from scalability limitations and difficulty handling uncertainty. We propose Rule-Guided Graph Transformers (RGGT), a neuro-symbolic framework that combines the scalability and expressiveness of graph transformer networks with the interpretability and structural inductive biases of logical rules. RGGT achieves state-of-the-art results on FB15k-237 (MRR: 0.371, Hits@1: 0.278) and WN18RR (MRR: 0.498, Hits@1: 0.454), while additionally producing interpretable reasoning chains for its predictions.
+
+1. Introduction
+
+Knowledge graphs such as Freebase, Wikidata, and DBpedia contain millions of entity-relation-entity triples representing factual knowledge about the world. Despite their scale, knowledge graphs are inherently incomplete, as new facts are continuously discovered and many valid relationships remain unrecorded. Knowledge graph completion, the task of inferring missing triples from observed ones, is therefore essential for maintaining and utilizing these resources.
+
+Two dominant paradigms have emerged for knowledge graph reasoning. Neural embedding methods project entities and relations into continuous vector spaces and define scoring functions that measure the plausibility of triples based on geometric or algebraic operations on these embeddings. These methods achieve competitive performance but operate as black boxes, offering no insight into the reasoning process. Symbolic approaches mine logical rules, such as born_in(X, Y) AND located_in(Y, Z) implies nationality(X, Z), from the graph structure and apply them deductively for inference. These rules are inherently interpretable but mining them exhaustively is computationally expensive, and applying them requires handling exceptions and uncertainty that rigid logical frameworks address poorly.
+
+2. Methodology
+
+RGGT integrates neural and symbolic reasoning through a dual-pathway architecture. The neural pathway employs a graph transformer that computes entity representations by attending to multi-hop neighborhoods with relation-aware attention weights. The symbolic pathway maintains a library of first-order logical rules mined using a scalable rule extraction algorithm. During inference, rules are instantiated on the graph to generate candidate triples with associated confidence scores. The fusion module combines neural embedding scores with rule-derived confidence scores through a learned attention mechanism that weights each pathway's contribution based on the query relation type and available evidence.
+
+Training proceeds jointly: the graph transformer parameters are optimized via contrastive loss on triple classification, while the rule confidence weights are updated based on their predictive utility through a differentiable rule-weighting mechanism.
+
+3. Results
+
+RGGT achieves an MRR of 0.371 on FB15k-237, improving over NBFNet (0.358) and RotatE (0.338). Qualitative analysis of the top rules selected by the fusion module shows strong alignment with domain knowledge, confirming the interpretability value of the symbolic pathway.
+
+4. Conclusion
+
+RGGT demonstrates that principled integration of neural and symbolic reasoning yields both superior predictive performance and interpretable reasoning for knowledge graph completion.
