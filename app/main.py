@@ -91,9 +91,22 @@ def build_vector_store(chunks: list, embedding_model, db_type: str):
 
 # ── Semantic Search ──────────────────────────────────────────────
 
+def _l2_to_similarity(l2_dist: float) -> float:
+    """Convert L2 distance to a 0-1 cosine similarity score.
+
+    For unit-normalised embeddings (sentence-transformers default):
+        L2^2 = 2 - 2*cos(theta)  =>  cos(theta) = 1 - L2^2 / 2
+    We clamp the result to [0, 1].
+    """
+    sim = 1.0 - (l2_dist ** 2) / 2.0
+    return max(0.0, min(1.0, sim))
+
+
 def search(vector_store, query: str, top_k: int = 5) -> list:
     """Return the top-k most relevant chunks for *query*.
 
-    Each element is a tuple (Document, score).
+    Each element is a tuple (Document, similarity) where similarity is
+    a float in [0, 1] (higher = more relevant).
     """
-    return vector_store.similarity_search_with_score(query, k=top_k)
+    raw = vector_store.similarity_search_with_score(query, k=top_k)
+    return [(doc, _l2_to_similarity(dist)) for doc, dist in raw]
